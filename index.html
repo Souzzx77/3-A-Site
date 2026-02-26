@@ -121,20 +121,32 @@ nav a{color:var(--muted);text-decoration:none;margin-left:28px;}
    FOOTER
 ========================= */
 
-footer{
-  background:#030405;
-  padding:60px 8vw;
-  font-size:.9rem;
+.footer-social{
+  display:flex;
+  gap:16px;
+  margin-top:14px;
 }
 
-.footer-grid{
+.footer-social a{
+  width:44px;
+  height:44px;
   display:grid;
-  gap:30px;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  place-items:center;
+  background:#0e1319;
+  border-radius:12px;
+  transition:.35s ease;
 }
 
-footer p{max-width:none;}
-footer small{color:#5c6a7f;}
+.footer-social a:hover{
+  transform:translateY(-4px) scale(1.05);
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+}
+
+.footer-social svg{
+  width:22px;
+  height:22px;
+  fill:#ffffff;
+}
 
 </style>
 </head>
