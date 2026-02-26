@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXA • Interface System</title>
+
+<style>
+/* =========================
+   DESIGN TOKEN ENGINE
+========================= */
+
+:root{
+  --bg:#0b0f14;
+  --surface:#121821;
+  --accent:#4da3ff;
+  --accent-soft:rgba(77,163,255,.15);
+  --text:#e6eef8;
+  --muted:#7f8ea3;
+
+  --radius:14px;
+  --radius-lg:26px;
+
+  --space-xs:.5rem;
+  --space-sm:1rem;
+  --space-md:2rem;
+  --space-lg:4rem;
+  --space-xl:8rem;
+
+  --transition:cubic-bezier(.2,.8,.2,1);
+}
+
+/* =========================
+   GLOBAL RESET
+========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,system-ui,-apple-system;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+  position:fixed;
+  width:100%;
+  padding:var(--space-sm) var(--space-lg);
+  backdrop-filter:blur(12px);
+  background:rgba(11,15,20,.6);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:10;
+}
+
+nav h1{
+  font-size:1.2rem;
+  letter-spacing:.2em;
+  font-weight:600;
+  color:var(--accent);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:var(--space-xl) var(--space-md);
+}
+
+.hero h2{
+  font-size:clamp(2rem,6vw,4.5rem);
+  font-weight:600;
+  line-height:1.1;
+}
+
+.hero p{
+  margin-top:var(--space-sm);
+  color:var(--muted);
+  max-width:650px;
+}
+
+/* =========================
+   GRID SECTION
+========================= */
+
+.section{
+  padding:var(--space-xl) var(--space-lg);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:var(--space-md);
+}
+
+.card{
+  background:var(--surface);
+  padding:var(--space-md);
+  border-radius:var(--radius);
+  position:relative;
+  overflow:hidden;
+  transition:.6s var(--transition);
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at var(--x) var(--y),
+  var(--accent-soft), transparent 40%);
+  opacity:0;
+  transition:.4s;
+}
+
+.card:hover::before{
+  opacity:1;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  padding:var(--space-lg);
+  text-align:center;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h1>NEXA SYSTEM</h1>
+</nav>
+
+<section class="hero">
+  <div>
+    <h2>Arquitetura Digital<br>de Próxima Geração</h2>
+    <p>
+      Interface construída sem frameworks.
+      Movimento guiado por física.
+      Pensada para escalar como produto — não como página.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="grid" id="grid"></div>
+</section>
+
+<footer>
+  Infraestrutura visual corporativa • Prototype Engine
+</footer>
+
+<script>
+/* =========================
+   COMPONENT ENGINE
+========================= */
+
+class NexaCard extends HTMLElement{
+  connectedCallback(){
+    this.innerHTML = `
+      <div class="card">
+        <h3>${this.getAttribute("title")}</h3>
+        <p>${this.getAttribute("desc")}</p>
+      </div>
+    `
+  }
+}
+
+customElements.define("nexa-card", NexaCard)
+
+/* =========================
+   DATA LAYER
+========================= */
+
+const data = [
+  {title:"Performance First",desc:"Renderização desacoplada de frameworks."},
+  {title:"Motion Intelligence",desc:"Animação via requestAnimationFrame."},
+  {title:"Design Token Driven",desc:"Escala visual controlada matematicamente."},
+  {title:"Frameworkless",desc:"Menos dependência, mais previsibilidade."},
+  {title:"Enterprise Ready",desc:"Pronto para backend distribuído."},
+  {title:"Future Adaptable",desc:"Arquitetura feita para evoluir."}
+]
+
+const grid = document.getElementById("grid")
+
+data.forEach(d=>{
+  const el = document.createElement("nexa-card")
+  el.setAttribute("title",d.title)
+  el.setAttribute("desc",d.desc)
+  grid.appendChild(el)
+})
+
+/* =========================
+   PHYSICS BASED CURSOR LIGHT
+========================= */
+
+let mouse = {x:0,y:0}
+let pos = {x:0,y:0}
+
+window.addEventListener("mousemove",e=>{
+  mouse.x = e.clientX
+  mouse.y = e.clientY
+})
+
+function animate(){
+  pos.x += (mouse.x - pos.x)*0.08
+  pos.y += (mouse.y - pos.y)*0.08
+
+  document.querySelectorAll(".card").forEach(card=>{
+    const rect = card.getBoundingClientRect()
+    card.style.setProperty("--x",pos.x-rect.left+"px")
+    card.style.setProperty("--y",pos.y-rect.top+"px")
+  })
+
+  requestAnimationFrame(animate)
+}
+
+animate()
+
+/* =========================
+   HERO PARALLAX DEPTH
+========================= */
+
+window.addEventListener("scroll",()=>{
+  const y = window.scrollY
+  document.querySelector(".hero").style.transform =
+  `translateY(${y*0.25}px)`
+})
+</script>
+
+</body>
+</html>
