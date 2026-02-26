@@ -118,36 +118,54 @@ nav a{color:var(--muted);text-decoration:none;margin-left:28px;}
 .social a:hover{background:var(--primary);}
 
 /* =========================
-   FOOTER
+   FOOTER • STRUCTURE
 ========================= */
 
-.footer-social{
-  display:flex;
-  gap:16px;
-  margin-top:14px;
+footer{
+  background:#020304;
+  margin-top:120px;
+  border-top:1px solid rgba(255,255,255,.06);
 }
 
-.footer-social a{
-  width:44px;
-  height:44px;
+.footer-grid{
+  padding:70px 8vw 40px;
   display:grid;
-  place-items:center;
-  background:#0e1319;
-  border-radius:12px;
-  transition:.35s ease;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:40px;
 }
 
-.footer-social a:hover{
-  transform:translateY(-4px) scale(1.05);
-  background:linear-gradient(135deg,var(--primary),var(--secondary));
+.footer-grid strong{
+  display:block;
+  margin-bottom:14px;
+  font-size:.95rem;
+  letter-spacing:.08em;
+  color:#ffffff;
 }
 
-.footer-social svg{
-  width:22px;
-  height:22px;
-  fill:#ffffff;
+.footer-grid p{
+  font-size:.9rem;
+  color:#7f8da3;
+  max-width:320px;
 }
 
+.footer-grid small{
+  color:#5f6b7c;
+  font-size:.78rem;
+  line-height:1.5;
+}
+
+/* Linha inferior */
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.05);
+  padding:18px 8vw;
+  font-size:.75rem;
+  color:#5c6776;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:10px;
+}
 </style>
 </head>
 
@@ -211,45 +229,52 @@ e execução criativa orientada por performance real.
 <div class="footer-grid">
 
 <div>
-<strong>Nexa Agency Enterprises</strong>
-<p>Estratégia • Marketing • Tecnologia • Posicionamento</p>
+<strong>NEXA AGENCY ENTERPRISES</strong>
+<p>
+Estratégia, marketing e infraestrutura digital para empresas
+que desejam crescer com posicionamento e previsibilidade.
+</p>
 </div>
 
 <div>
-<p><strong>CNPJ:</strong> 00.000.000/0001-00</p>
+<strong>Informações Legais</strong>
+<p>CNPJ: 00.000.000/0001-00</p>
 <p>São Paulo — Brasil</p>
 </div>
 
-   <div>
-<p><strong>Redes Oficiais</strong></p>
+<div>
+<strong>Redes Oficiais</strong>
 
 <div class="footer-social">
 
-<a href="https://wa.me/5511981332616" target="_blank" aria-label="WhatsApp">
-<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp">
+<a href="https://wa.me/5511981332616" target="_blank">
+<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg">
 </a>
 
-<a href="https://instagram.com/souzzx_77" target="_blank" aria-label="Instagram">
-<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+<a href="https://instagram.com/souzzx_77" target="_blank">
+<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg">
 </a>
 
-<a href="https://discord.gg/https://discord.gg/yU9ZBtNvq" target="_blank" aria-label="Discord">
-<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord">
+<a href="https://discord.gg/yU9ZBtNvq" target="_blank">
+<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg">
 </a>
 
 </div>
 </div>
 
 <div>
-<p><strong>Termos e Condições</strong></p>
-<small>O uso deste site implica na aceitação das políticas comerciais e operacionais da Nexa Agency Enterprises.</small>
+<strong>Termos</strong>
+<small>
+O uso deste site implica na aceitação dos termos comerciais,
+contratuais e operacionais da Nexa Agency Enterprises.
+</small>
 </div>
 
-<div>
-<p><strong>Direitos</strong></p>
-<small>© 2026 Nexa Agency Enterprises. Todos os direitos reservados.</small>
 </div>
 
+<div class="footer-bottom">
+<span>© 2026 Nexa Agency Enterprises — Todos os direitos reservados.</span>
+<span>Desenvolvido com infraestrutura digital proprietária.</span>
 </div>
 </footer>
 
