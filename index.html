@@ -3,49 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEXA • Interface System</title>
+<title>Nexa Agency Enterprises</title>
+
+<meta name="description" content="Estratégia, posicionamento e crescimento digital. A Nexa transforma presença em autoridade.">
 
 <style>
+
 /* =========================
-   DESIGN TOKEN ENGINE
+   DESIGN SYSTEM • NEXA
 ========================= */
 
 :root{
-  --bg:#0b0f14;
-  --surface:#121821;
-  --accent:#4da3ff;
-  --accent-soft:rgba(77,163,255,.15);
-  --text:#e6eef8;
-  --muted:#7f8ea3;
-
-  --radius:14px;
-  --radius-lg:26px;
-
-  --space-xs:.5rem;
-  --space-sm:1rem;
-  --space-md:2rem;
-  --space-lg:4rem;
-  --space-xl:8rem;
-
-  --transition:cubic-bezier(.2,.8,.2,1);
+  --bg:#05070a;
+  --surface:#0e1319;
+  --primary:#4da3ff;
+  --secondary:#6df2c1;
+  --text:#e9eef5;
+  --muted:#7f8da3;
+  --radius:16px;
 }
 
-/* =========================
-   GLOBAL RESET
-========================= */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui;}
+body{background:var(--bg);color:var(--text);line-height:1.6;}
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Inter,system-ui,-apple-system;
-}
-
-body{
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-}
+section{padding:100px 8vw;}
+h1,h2,h3{font-weight:600;letter-spacing:-.02em;}
+p{color:var(--muted);max-width:620px;}
 
 /* =========================
    NAVBAR
@@ -53,22 +36,18 @@ body{
 
 nav{
   position:fixed;
+  top:0;
   width:100%;
-  padding:var(--space-sm) var(--space-lg);
-  backdrop-filter:blur(12px);
-  background:rgba(11,15,20,.6);
+  padding:22px 8vw;
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  z-index:10;
+  backdrop-filter:blur(12px);
+  background:rgba(5,7,10,.7);
+  z-index:100;
 }
 
-nav h1{
-  font-size:1.2rem;
-  letter-spacing:.2em;
-  font-weight:600;
-  color:var(--accent);
-}
+nav strong{color:var(--primary);letter-spacing:.15em;}
+nav a{color:var(--muted);text-decoration:none;margin-left:28px;}
 
 /* =========================
    HERO
@@ -76,179 +55,226 @@ nav h1{
 
 .hero{
   min-height:100vh;
-  display:grid;
-  place-items:center;
-  text-align:center;
-  padding:var(--space-xl) var(--space-md);
+  display:flex;
+  align-items:center;
 }
 
-.hero h2{
-  font-size:clamp(2rem,6vw,4.5rem);
+.hero h1{
+  font-size:clamp(2.4rem,5vw,4.6rem);
+  margin-bottom:20px;
+}
+
+.cta{
+  margin-top:30px;
+  padding:16px 28px;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#000;
   font-weight:600;
-  line-height:1.1;
+  border:none;
+  cursor:pointer;
+  transition:.4s;
 }
-
-.hero p{
-  margin-top:var(--space-sm);
-  color:var(--muted);
-  max-width:650px;
-}
+.cta:hover{transform:translateY(-3px);}
 
 /* =========================
-   GRID SECTION
+   SERVICES
 ========================= */
-
-.section{
-  padding:var(--space-xl) var(--space-lg);
-}
 
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:var(--space-md);
+  gap:28px;
+  margin-top:50px;
 }
 
 .card{
   background:var(--surface);
-  padding:var(--space-md);
+  padding:28px;
   border-radius:var(--radius);
-  position:relative;
-  overflow:hidden;
-  transition:.6s var(--transition);
-}
-
-.card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at var(--x) var(--y),
-  var(--accent-soft), transparent 40%);
-  opacity:0;
   transition:.4s;
 }
+.card:hover{transform:translateY(-6px);}
 
-.card:hover::before{
-  opacity:1;
+/* =========================
+   SOCIAL ICONS
+========================= */
+
+.social{
+  display:flex;
+  gap:18px;
+  margin-top:20px;
 }
 
-.card:hover{
-  transform:translateY(-8px);
+.social a{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  background:var(--surface);
+  border-radius:10px;
+  transition:.3s;
 }
+.social a:hover{background:var(--primary);}
 
 /* =========================
    FOOTER
 ========================= */
 
 footer{
-  padding:var(--space-lg);
-  text-align:center;
-  color:var(--muted);
+  background:#030405;
+  padding:60px 8vw;
+  font-size:.9rem;
 }
+
+.footer-grid{
+  display:grid;
+  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+}
+
+footer p{max-width:none;}
+footer small{color:#5c6a7f;}
+
 </style>
 </head>
 
 <body>
 
 <nav>
-  <h1>NEXA SYSTEM</h1>
+<strong>NEXA</strong>
+<div>
+<a href="#servicos">Serviços</a>
+<a href="#sobre">Sobre</a>
+<a href="#contato">Contato</a>
+</div>
 </nav>
 
 <section class="hero">
-  <div>
-    <h2>Arquitetura Digital<br>de Próxima Geração</h2>
-    <p>
-      Interface construída sem frameworks.
-      Movimento guiado por física.
-      Pensada para escalar como produto — não como página.
-    </p>
-  </div>
+<div>
+<h1>Presença Digital não é Estética.<br>É Posicionamento Estratégico.</h1>
+<p>
+A Nexa Agency Enterprises desenvolve marcas que não apenas aparecem —
+elas dominam percepção, autoridade e conversão.
+</p>
+<button class="cta">Iniciar Projeto</button>
+</div>
 </section>
 
-<section class="section">
-  <div class="grid" id="grid"></div>
+<section id="servicos">
+<h2>Soluções Estratégicas</h2>
+
+<div class="grid">
+<div class="card">
+<h3>Brand Authority</h3>
+<p>Construção de identidade que gera reconhecimento imediato e confiança.</p>
+</div>
+
+<div class="card">
+<h3>Performance Marketing</h3>
+<p>Campanhas orientadas por dados, não achismos.</p>
+</div>
+
+<div class="card">
+<h3>Infraestrutura Digital</h3>
+<p>Sites e sistemas preparados para escalar junto ao negócio.</p>
+</div>
+
+<div class="card">
+<h3>Posicionamento Premium</h3>
+<p>Transformamos marcas comuns em referências de mercado.</p>
+</div>
+</div>
+</section>
+
+<section id="sobre">
+<h2>Não Somos Fornecedores.<br>Somos Arquitetos de Crescimento.</h2>
+<p>
+Cada projeto nasce de diagnóstico estratégico, análise comportamental
+e execução criativa orientada por performance real.
+</p>
+</section>
+
+<section id="contato">
+<h2>Conecte-se com a Nexa</h2>
+
+<div class="social">
+
+<a href="https://wa.me/" target="_blank">
+<!-- WhatsApp -->
+<svg width="20" fill="#fff" viewBox="0 0 24 24">
+<path d="M20 3.5A11 11 0 005.5 18L4 22l4.7-1.5A11 11 0 1020 3.5z"/>
+</svg>
+</a>
+
+<a href="https://instagram.com" target="_blank">
+<!-- Instagram -->
+<svg width="20" fill="#fff" viewBox="0 0 24 24">
+<rect x="2" y="2" width="20" height="20" rx="5"/>
+</svg>
+</a>
+
+<a href="https://discord.com" target="_blank">
+<!-- Discord -->
+<svg width="20" fill="#fff" viewBox="0 0 24 24">
+<path d="M20 4a16 16 0 00-4-1l-.5 1A14 14 0 008.5 4l-.5-1A16 16 0 004 4C1 9 1 15 1 15a18 18 0 005 3l1-1a12 12 0 01-2-1c3 1 8 1 11 0a12 12 0 01-2 1l1 1a18 18 0 005-3s0-6-3-11z"/>
+</svg>
+</a>
+
+</div>
 </section>
 
 <footer>
-  Infraestrutura visual corporativa • Prototype Engine
+<div class="footer-grid">
+
+<div>
+<strong>Nexa Agency Enterprises</strong>
+<p>Estratégia • Marketing • Tecnologia • Posicionamento</p>
+</div>
+
+<div>
+<p><strong>CNPJ:</strong> 00.000.000/0001-00</p>
+<p>São Paulo — Brasil</p>
+</div>
+
+   <div>
+<p><strong>Redes Oficiais</strong></p>
+
+<div class="footer-social">
+
+<a href="https://wa.me/SEUNUMERO" target="_blank" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24">
+<path d="M20 3.5A11 11 0 005.5 18L4 22l4.7-1.5A11 11 0 1020 3.5z"/>
+</svg>
+</a>
+
+<a href="https://instagram.com/@souzzx_77" target="_blank" aria-label="Instagram">
+<svg viewBox="0 0 24 24">
+<rect x="2" y="2" width="20" height="20" rx="5"/>
+</svg>
+</a>
+
+<a href="https://discord.gg/SEULINK" target="_blank" aria-label="Discord">
+<svg viewBox="0 0 24 24">
+<path d="M20 4a16 16 0 00-4-1l-.5 1A14 14 0 008.5 4l-.5-1A16 16 0 004 4C1 9 1 15 1 15a18 18 0 005 3l1-1a12 12 0 01-2-1c3 1 8 1 11 0a12 12 0 01-2 1l1 1a18 18 0 005-3s0-6-3-11z"/>
+</svg>
+</a>
+
+</div>
+</div>
+
+<div>
+<p><strong>Termos e Condições</strong></p>
+<small>O uso deste site implica na aceitação das políticas comerciais e operacionais da Nexa Agency Enterprises.</small>
+</div>
+
+<div>
+<p><strong>Direitos</strong></p>
+<small>© 2026 Nexa Agency Enterprises. Todos os direitos reservados.</small>
+</div>
+
+</div>
 </footer>
-
-<script>
-/* =========================
-   COMPONENT ENGINE
-========================= */
-
-class NexaCard extends HTMLElement{
-  connectedCallback(){
-    this.innerHTML = `
-      <div class="card">
-        <h3>${this.getAttribute("title")}</h3>
-        <p>${this.getAttribute("desc")}</p>
-      </div>
-    `
-  }
-}
-
-customElements.define("nexa-card", NexaCard)
-
-/* =========================
-   DATA LAYER
-========================= */
-
-const data = [
-  {title:"Performance First",desc:"Renderização desacoplada de frameworks."},
-  {title:"Motion Intelligence",desc:"Animação via requestAnimationFrame."},
-  {title:"Design Token Driven",desc:"Escala visual controlada matematicamente."},
-  {title:"Frameworkless",desc:"Menos dependência, mais previsibilidade."},
-  {title:"Enterprise Ready",desc:"Pronto para backend distribuído."},
-  {title:"Future Adaptable",desc:"Arquitetura feita para evoluir."}
-]
-
-const grid = document.getElementById("grid")
-
-data.forEach(d=>{
-  const el = document.createElement("nexa-card")
-  el.setAttribute("title",d.title)
-  el.setAttribute("desc",d.desc)
-  grid.appendChild(el)
-})
-
-/* =========================
-   PHYSICS BASED CURSOR LIGHT
-========================= */
-
-let mouse = {x:0,y:0}
-let pos = {x:0,y:0}
-
-window.addEventListener("mousemove",e=>{
-  mouse.x = e.clientX
-  mouse.y = e.clientY
-})
-
-function animate(){
-  pos.x += (mouse.x - pos.x)*0.08
-  pos.y += (mouse.y - pos.y)*0.08
-
-  document.querySelectorAll(".card").forEach(card=>{
-    const rect = card.getBoundingClientRect()
-    card.style.setProperty("--x",pos.x-rect.left+"px")
-    card.style.setProperty("--y",pos.y-rect.top+"px")
-  })
-
-  requestAnimationFrame(animate)
-}
-
-animate()
-
-/* =========================
-   HERO PARALLAX DEPTH
-========================= */
-
-window.addEventListener("scroll",()=>{
-  const y = window.scrollY
-  document.querySelector(".hero").style.transform =
-  `translateY(${y*0.25}px)`
-})
-</script>
 
 </body>
 </html>
